@@ -172,7 +172,7 @@ func appendEnv(watch *WatchConfig, env map[string]string) {
 	watch.Step.Build.Env, _ = parseEnv(watch.Step.Build.RawEnv)
 
 	for key, value := range env {
-		if watch.Step.Command != "" {
+		if watch.Step.Command != nil || watch.Step.Commands != nil {
 			if watch.Step.Env == nil {
 				watch.Step.Env = make(map[string]string)
 			}
